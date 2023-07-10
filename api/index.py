@@ -1,7 +1,5 @@
 from flask import Flask,render_template,request
-from json import load
 import core as c
-from json import loads
 from flask_cors import cross_origin
 
 app = Flask(__name__, template_folder='../templates',static_folder='../static')
