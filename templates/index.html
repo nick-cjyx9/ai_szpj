@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name='description' content='{{ description }}'>
+  <title>{{ title }}</title>
+  <link rel='canonical' href='{{ online_url }}'>
+  <!-- 统计here -->
+  <meta property='og:title' content='{{ title }}'>
+  <meta property='og:description' content='{{ description }}'>
+  <meta property='og:url' content='{{ online_url }}'>
+  <meta property='og:site_name' content='{{ title }}'>
+  <meta property='og:type' content='website'>
+  <!-- <meta property='og:updated_time' content='' /> -->
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <link rel="shortcut icon" href="{{ icon_link }}" />
+  <link rel="icon" href="{{ icon_link }}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/general.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fasthand" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  <!-- Image and text -->
+<nav class="navbar navbar-light" style="background-color: #e9ecef;">
+  <a class="navbar-brand" style="font-family: 'Fasthand', cursive;font-size: 22px;">
+    <img src="https://s2.loli.net/2023/07/09/5jSIsKpmHM8fEYx.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    &nbsp;Nick's Projects
+  </a>
+  </nav>
+  <main>
+    {% if reply %}
+    <div class="card">
+      <div class="card-header" style="font-weight: 600;font-size: larger;">
+        搞定了！长按复制吧！
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">推荐指标：{{ commendCate }}</li>
+        <li class="list-group-item">标题：{{ name }}</li>
+        <li class="list-group-item">地点：{{ location }}</li>
+        <li class="list-group-item">活动过程：{{ process }}</li>
+        <li class="list-group-item">收获：{{ gain }}</li>
+      </ul>
+      <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="https://zhszpj.cdedu.com/xgk/login" target="_blank">跳转至平台施展魔法！！！</a>
+    </div>
+    {% endif %}
+    <div class="jumbotron">
+      <h1 class="display-4" style="margin-bottom: 20px;">Fxxk-zhszpj-by-AI</h1>
+      <p class="lead">一个生成综合素质评价活动过程的工具，使用gpt-3.5 turbo模型,<b class="text-danger">使用前请务必阅读文档！</b></p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">去看(还不存在的)文档 →</a>
+    </div>
+    <hr class="my-4">
+    <form method="post" style="font-size: large;">
+      <div class="form-group">
+        <label for="event text-dark">Event:</label>
+        <input type="text" class="form-control" id="event" name="event" required placeholder="概括性的描述活动，20字以内" maxlength="20" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="explain text-dark">Explain:</label>
+        <textarea class="form-control" id="explain" name="explain" rows="5" required placeholder="较详细地描述活动，120字以内" maxlength="120" autocomplete="off"></textarea>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="imaginable" name="imaginable" required checked>
+        <label class="form-check-label" for="imaginable" >imaginable（能否接受合理虚构内容）</label>
+        <label for="other" style="float: right;"><a class="text-decoration-none" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">其他选项</a></label>
+      </div>
+      <div class="form-group">
+        <div class="collapse" id="collapseExample">
+          <textarea class="form-control" id="other" name="other" rows="3" placeholder="补充内容，50字以内" maxlength="50"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="subtn btn btn-primary" style="padding: 12px 0;font-weight: 600;margin-top: 12px;"><span style="font-family: 'Fasthand';font-size: x-large;font-weight: 500;">Decimation Flash</span>（施法！）</button>
+    </form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">心急吃不了热豆腐~</h5>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center">
+          <strong>[素质爆炸]魔法部署中，请耐心等待~</strong>
+          <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+      </div>
+  </div>
+</div>
+  </main>
+  <footer class="site-footer" style="text-align: center;font-weight: 500;">
+    <section class="copyright t-6 text-dark">
+      Powered by&nbsp;
+      <a href="https://flask.palletsprojects.com/" target="_blank"><img src="https://flask.palletsprojects.com/en/2.3.x/_images/flask-horizontal.png" style="width: 68px;" alt="flask" class="logo"></a>
+       | &copy;2023 Copyright by <a href="https://github.com/nick-cjyx9" target="_blank" style="font-family: 'Fasthand', cursive;font-size: 18px;">@Nick Chen</a> | APIs by <a href="https://kamiya.dev" style="font-family: 'Fasthand', cursive;font-size: 19px;"><img src="https://docs.kamiya.dev/_media/kamiya_icon_120px.png" style="width: 20px;margin-right: 3px;">Kamiya.Dev</a>
+    </section>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+<script>
+  function logSubmit(event) {
+    $('#exampleModal').modal('show')
+    //event.preventDefault();
+  }
+  let mform=document.querySelector("body > main > form")
+  mform.addEventListener('submit',logSubmit)
+</script>
+</html>
