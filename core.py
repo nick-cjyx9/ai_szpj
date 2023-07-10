@@ -2,15 +2,15 @@
 import requests as r
 from json import dumps,loads
 from json.decoder import JSONDecodeError
-
+import os
 headers = {"Content-Type": "application/json"}
 MAX_DEPTH = 2
 
-with open('secret.txt','r') as f:
-    secret = f.readline()
-    headers["Authorization"] = "Bearer " + secret[:-1]
-    f.close()
-
+# with open('secret.txt','r') as f:
+#     secret = f.readline()
+#     headers["Authorization"] = "Bearer " + secret[:-1]
+#     f.close()
+headers["Authorization"] = "Bearer " + os.getenv('SECRET_KEY', 'dev')
 api_url = "https://p0.kamiya.dev/api"
 def apiLink(path:str) -> str:
     return api_url+path
