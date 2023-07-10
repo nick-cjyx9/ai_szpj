@@ -68,6 +68,7 @@ def dataProcess(data:list,depth:int=1,failed_text:str=""):
             bot_reply = bot_reply[bot_reply.rfind('{"'):bot_reply.find('"}')+2]
             # 去掉多余括号
             try:
+                print("[LOG]:::"+bot_reply)
                 bot_reply = loads(bot_reply,strict=False)
                 # 尝试编码
             except JSONDecodeError:
